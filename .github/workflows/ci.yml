@@ -35,7 +35,8 @@ jobs:
 
     - name: Uploading the artifacts
       uses: actions/upload-artifact@v4
+      run: pwd && ls
       with:
         name: trained-model
-        path: ../artifacts
+        path: first_demo_flowers/artifacts
 
