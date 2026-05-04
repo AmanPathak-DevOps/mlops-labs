@@ -2,7 +2,7 @@ name: Training and Building the model
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
