@@ -1,0 +1,5 @@
+[core]
+    remote = mlops-dvcs3
+    autostage = true
+['remote "mlops-dvcs3"']
+    url = s3://amzn-mlops-dvcs3-demo
