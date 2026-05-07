@@ -1,0 +1,32 @@
+backendStore:
+  databaseMigration: true
+
+  postgres:
+    enabled: true
+    host: mlopsdatabase-lab.<rds-endpoint>.rds.amazonaws.com
+    port: 5432
+    database: mlflow
+    user: postgres
+    password: <rds-pwd>
+
+artifactRoot:
+  s3:
+    enabled: true
+    bucket: mlops-<bucketname>
+
+extraEnvVars:
+  AWS_ACCESS_KEY_ID: <Accesskey-to-store-artifacts-on-S3>
+  AWS_SECRET_ACCESS_KEY: <SecretAccesskey-to-store-artifacts-on-S3>
+  MLFLOW_S3_ENDPOINT_URL: https://s3.amazonaws.com
+
+extraArgs:
+  host: 0.0.0.0
+  allowedHosts: "*"
+
+extraFlags: []
+
+service:
+  type: ClusterIP
+
+log:
+  enabled: false
