@@ -1,19 +1,34 @@
 from flask import Flask, request, jsonify
 from model.intent_model import IntentModel
-import os
 
 app = Flask(__name__)
+
+# Load model once during startup
 model = IntentModel()
 
-@app.route("/health")
+
+@app.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status":"ok"})
+    return jsonify({
+        "status": "healthy"
+    }), 200
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
+
+    if not data or "text" not in data:
+        return jsonify({
+            "error": "text field is required"
+        }), 400
+
     text = data.get("text")
-    return jsonify(model.predict(text))
+
+    prediction = model.predict(text)
+
+    return jsonify(prediction), 200
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
