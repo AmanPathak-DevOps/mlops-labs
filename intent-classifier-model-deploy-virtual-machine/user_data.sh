@@ -37,9 +37,9 @@ After=network.target
 [Service]
 User=ubuntu
 Group=ubuntu
-WorkingDirectory=/opt/intent-app
-Environment="PATH=/opt/intent-app/.venv/bin"
-ExecStart=/opt/intent-app/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:5000 wsgi:app
+WorkingDirectory=/home/ubuntu/intent-app
+Environment="PATH=/home/ubuntu/intent-app/.venv/bin"
+ExecStart=/home/ubuntu/intent-app/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:5000 wsgi:app
 Restart=always
 
 [Install]
