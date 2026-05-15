@@ -37,7 +37,7 @@ After=network.target
 [Service]
 User=ubuntu
 Group=ubuntu
-WorkingDirectory=/home/ubuntu/intent-app
+WorkingDirectory=/home/ubuntu/intent-app/mlops-labs/intent-classifier-model-deploy-virtual-machine
 Environment="PATH=/home/ubuntu/intent-app/.venv/bin"
 ExecStart=/home/ubuntu/intent-app/.venv/bin/gunicorn --workers 3 --bind 127.0.0.1:5000 wsgi:app
 Restart=always
@@ -52,7 +52,7 @@ server {
     server_name _;
 
     location / {
-        proxy_pass http://127.0.0.1:5000/predict;
+        proxy_pass http://127.0.0.1:5000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
