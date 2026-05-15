@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "igw" {
     Name = "${var.project_name}-igw"
   }
 
-  depends_on = [ aws_vpc.main ]
+  depends_on = [aws_vpc.main]
 }
 
 # --------------------------------------------------
@@ -36,7 +36,7 @@ resource "aws_subnet" "public_1" {
     Name = "${var.project_name}-public-1"
   }
 
-  depends_on = [ aws_vpc.main ]
+  depends_on = [aws_vpc.main]
 }
 
 resource "aws_subnet" "public_2" {
@@ -63,7 +63,7 @@ resource "aws_subnet" "private_1" {
     Name = "${var.project_name}-private-1"
   }
 
-  depends_on = [ aws_vpc.main ]
+  depends_on = [aws_vpc.main]
 }
 
 resource "aws_subnet" "private_2" {
@@ -75,7 +75,7 @@ resource "aws_subnet" "private_2" {
     Name = "${var.project_name}-private-2"
   }
 
-  depends_on = [ aws_vpc.main ]
+  depends_on = [aws_vpc.main]
 }
 
 # --------------------------------------------------
@@ -89,7 +89,7 @@ resource "aws_eip" "nat_eip" {
     Name = "${var.project_name}-nat-eip"
   }
 
-  depends_on = [ aws_vpc.main ]
+  depends_on = [aws_vpc.main]
 }
 
 # --------------------------------------------------
