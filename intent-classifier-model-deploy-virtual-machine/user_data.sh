@@ -25,7 +25,7 @@ source .venv/bin/activate
 
 cd mlops-labs/intent-classifier-model-deploy-virtual-machine
 
-python3 -m pip install requirements.txt
+python3 -m pip install -r requirements.txt
 
 python3 model/train.py
 
