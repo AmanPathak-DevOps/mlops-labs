@@ -1,4 +1,4 @@
-ntent Classifier Model
+Intent Classifier Model
 
 This small project demonstrates:
 - Training a tiny text classifier.
