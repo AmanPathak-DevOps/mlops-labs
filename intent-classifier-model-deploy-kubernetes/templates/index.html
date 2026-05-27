@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intent Classifier AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Intent Classifier AI</h1>
+    <p class="subtitle">
+        Enter customer text and predict its intent using ML
+    </p>
+
+    <textarea id="textInput" placeholder="Type your message here..."></textarea>
+
+    <button onclick="predictIntent()">Predict Intent</button>
+
+    <div id="loading" class="hidden">
+        Predicting...
+    </div>
+
+    <div id="result" class="result hidden">
+        <h2>Prediction Result</h2>
+        <pre id="resultText"></pre>
+    </div>
+</div>
+
+<script>
+async function predictIntent() {
+
+    const text = document.getElementById("textInput").value;
+
+    if (!text.trim()) {
+        alert("Please enter text");
+        return;
+    }
+
+    document.getElementById("loading").classList.remove("hidden");
+    document.getElementById("result").classList.add("hidden");
+
+    try {
+
+        const response = await fetch("/predict", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: text
+            })
+        });
+
+        const data = await response.json();
+
+        document.getElementById("resultText").textContent =
+            JSON.stringify(data, null, 2);
+
+        document.getElementById("result").classList.remove("hidden");
+
+    } catch (error) {
+
+        document.getElementById("resultText").textContent =
+            "Error occurred";
+
+        document.getElementById("result").classList.remove("hidden");
+
+    } finally {
+
+        document.getElementById("loading").classList.add("hidden");
+    }
+}
+</script>
+
+</body>
+</html>

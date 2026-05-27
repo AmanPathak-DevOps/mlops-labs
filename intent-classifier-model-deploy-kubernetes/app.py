@@ -1,10 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from model.intent_model import IntentModel
 
 app = Flask(__name__)
 
-# Load model once during startup
 model = IntentModel()
+
+
+@app.route("/", methods=["GET"])
+def home():
+    return render_template("index.html")
 
 
 @app.route("/health", methods=["GET"])
@@ -16,6 +20,7 @@ def health():
 
 @app.route("/predict", methods=["POST"])
 def predict():
+
     data = request.get_json()
 
     if not data or "text" not in data:

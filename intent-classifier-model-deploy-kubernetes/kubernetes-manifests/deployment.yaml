@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: intent-classifier
-          image: avian19/*
+          image: avian19/mlops-intent-project:v2-frontend
           ports:
-            - containerPort: 6000
+            - containerPort: 5000
