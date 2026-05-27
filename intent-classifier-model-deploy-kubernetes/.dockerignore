@@ -1,0 +1,62 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.bitbucket
+bitbucket-pipelines.yml
+.github
+.gitlab-ci.yml
+
+# IDE / Editor
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose*.yml
+docker-compose*.yaml
+.dockerignore
+
+# DDEV (local dev only)
+.ddev
+
+# Node
+node_modules
+
+# Docs
+README.md
+CHANGELOG.md
+LICENSE
+LICENSE.md
+docs/
+
+# Tests
+tests/
+test/
+phpunit.xml
+phpunit.xml.dist
+phpcs.xml
+phpcs.xml.dist
+.phpcs.xml
+behat.yml
+behat.yml.dist
+
+web/sites/default/files
+web/sites/*/settings.local.php
+web/sites/*/services.local.yml
+
+# OS junk
+*.log
+*.pid
+*.seed
+
+# Custom files
+infra-*
+kubernetes*
+README.md
