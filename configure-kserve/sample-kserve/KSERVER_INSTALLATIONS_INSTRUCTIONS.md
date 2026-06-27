@@ -17,6 +17,54 @@ helm install \
   --set crds.enabled=true
 ```
 
+## Install Gateway API
+<!-- ```
+kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.2.1/standard-install.yaml
+``` -->
+
+## Create a Gateway Class
+```
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: istio
+spec:
+  controller: istio.io/ingress-controller
+```
+
+## Create a Gateway resource to expose InferenceService
+<!-- ```
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: kserve-ingress-gateway
+  namespace: kserve
+spec:
+  gatewayClassName: envoy
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: my-secret
+            namespace: kserve
+      allowedRoutes:
+        namespaces:
+          from: All
+  infrastructure:
+    labels:
+      serving.kserve.io/gateway: kserve-ingress-gateway
+``` -->
+
 ## Install KServe CRD [[text](https://kserve.github.io/website/docs/admin-guide/kubernetes-deployment)]
 ```
 helm install kserve-crd oci://ghcr.io/kserve/charts/kserve-crd --version v0.18.0

@@ -44,3 +44,10 @@ build/
 *.tfstate
 *.tfstate.backup
 *.terraform*
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Model artifacts (generated at build time)
+**/model/artifacts/*.pkl
